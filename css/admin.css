@@ -1,0 +1,233 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Estilos para o Painel Administrativo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #c28f8fbe; 
+    color: #333; 
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #bb335c; 
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.admin-container {
+    display: flex; 
+    gap: 20px;
+    max-width: 1200px; 
+    margin: 20px auto;
+    background-color: #faf4f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    flex-wrap: wrap; 
+    align-items: flex-start; 
+}
+
+#calendar {
+    flex-grow: 1;    
+    flex-shrink: 0; 
+    flex-basis: 700px; 
+    
+    background-color: #faf4f9;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.agenda-do-dia {
+    flex-grow: 1;    
+    flex-shrink: 0; 
+    flex-basis: 350px; 
+
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    overflow-y: auto; 
+    max-height: 600px;
+    word-wrap: break-word;
+}
+
+.agenda-do-dia h2 {
+    color: #bb335c;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.agenda-do-dia ul {
+    list-style: none;
+    padding: 0;
+}
+
+.agenda-do-dia li {
+    background-color: #e9ecef;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 4px;
+    line-height: 1.5;
+    word-wrap: break-word; 
+    color: #495057;
+}
+
+.agenda-do-dia li strong {
+    color: #bb335c;
+}
+
+/* --- ESTILOS PARA A SEÇÃO DE CLIENTES --- */
+.clientes-lista-container {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 400px; 
+    
+    background-color: #f9f9f9; 
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    margin-top: 20px; 
+    overflow-x: auto; 
+}
+.clientes-lista-container h2 {
+    color: #bb335c; 
+    margin-top: 0;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+.clientes-tabela {
+    width: 100%;
+    border-collapse: collapse; 
+    margin-top: 15px;
+    color: #333; 
+}
+.clientes-tabela th, .clientes-tabela td {
+    border: 1px solid #ddd; 
+    padding: 10px;
+    text-align: left;
+    white-space: nowrap; 
+}
+.clientes-tabela td {
+    white-space: normal; 
+}
+.clientes-tabela th {
+    background-color: #faf4f9; 
+    color: #5a2e6f; 
+    font-weight: bold;
+}
+.clientes-tabela tr:nth-child(even) { 
+    background-color: #f2f2f2; 
+}
+.clientes-tabela tr:hover { 
+    background-color: #e0f2f7; 
+}
+
+/* --- Estilos dos Botões de Controle (Calendário/Clientes) --- */
+.admin-controls {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.control-button {
+    background-color: #bb335c; 
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+}
+
+.control-button:hover {
+    background-color: #8a2647; 
+}
+
+.control-button.active {
+    background-color: #c28f8fbe; 
+    font-weight: bold;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.visible {
+    display: flex;
+  
+}
+
+
+#calendar-section.visible {
+    display: flex; 
+}
+
+#clients-section.visible {
+   
+    display: flex; 
+    flex-wrap: wrap; 
+    align-items: flex-start;
+}
+
+@media (max-width: 1150px) {
+    .admin-container {
+        flex-direction: column; 
+    }
+    #calendar, .agenda-do-dia, .clientes-lista-container {
+        min-width: unset; 
+        max-width: 100%; 
+        width: 100%; 
+        flex-basis: auto; 
+    }
+    .agenda-do-dia {
+        max-height: 400px; 
+    }
+}
+
+/* --- Estilos para os Botões Nativos do FullCalendar --- */
+.fc .fc-button-primary {
+    background-color: #bb335c; 
+    color: white;
+    border-color: #bb335c;
+}
+
+.fc .fc-button-primary:hover,
+.fc .fc-button-primary:focus {
+    background-color: #8a2647; 
+    border-color: #8a2647;
+    box-shadow: none; 
+}
+
+.fc .fc-button-primary.fc-button-active {
+    background-color: #c28f8fbe; 
+    border-color:#c28f8fbe;
+}
+
+.fc .fc-toolbar-title {
+    color: #495057; 
+}
+
+.fc-daygrid-day-header {
+    color: #6c757d; 
+}
+
+.fc-daygrid-day-number {
+    color: #343a40; 
+}
+
+.fc-event {
+    background-color: #bb335c; 
+    border-color: #bb335c;
+    color: white;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-size: 0.85em;
+    cursor: pointer;
+}
