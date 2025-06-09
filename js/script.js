@@ -1,5 +1,3 @@
-// js/script.js
-
 document.addEventListener('DOMContentLoaded', () => {
     // --- Lógica para alternar formulários de Login/Cadastro (para index.php) ---
     const wrapper = document.querySelector('.wrapper');
@@ -22,8 +20,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const timeSlotsGrid = document.querySelector('.time-slots-grid');
     const selectedTimeInput = document.getElementById('selectedTimeInput'); 
     const bookingForm = document.getElementById('bookingForm');
+    
+    // ==========================================================
+    // ===== TRECHO NOVO PARA CORRIGIR A PASSAGEM DE DADOS =====
+    // ==========================================================
+    // Esta função pega os dados de serviços que foram enviados pela página anterior
+    // e os armazena em um campo escondido do formulário de agendamento.
+    function transferServicesData() {
+        // Tenta pegar os dados de serviços do 'localStorage' (uma "memória" do navegador)
+        const servicesData = localStorage.getItem('selectedServices');
+        const hiddenInput = document.getElementById('selectedServicesHidden');
+
+        if (servicesData && hiddenInput) {
+            // Se encontrou dados, coloca no input escondido
+            hiddenInput.value = servicesData;
+        }
+    }
+    // ==========================================================
+
 
     if (bookingDateInput) { 
+        // Chama a nova função assim que a página de agendamento carregar
+        transferServicesData();
+
         function loadAvailableTimes(dateStr) {
             if (!timeSlotsGrid) return;
 
@@ -74,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 })
                 .catch(error => {
-                    console.error('Agendamento: Erro ao buscar horários:', error); // Mantendo este console.error que é útil
+                    console.error('Agendamento: Erro ao buscar horários:', error);
                     if (timeSlotsGrid) { 
                         timeSlotsGrid.innerHTML = '<div class="error-message" style="text-align: center; color: #bb335c; width:100%;">Não foi possível carregar os horários. Tente novamente.</div>';
                     }
@@ -106,7 +125,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
-
+        
+        if (bookingForm) {
+            bookingForm.addEventListener('submit', (event) => {
+                if (!selectedTimeInput.value) {
+                    event.preventDefault(); 
+                    alert('Por favor, selecione um horário para continuar.');
+                }
+            });
+        }
+        
         const initialDate = bookingDateInput.value;
         if (initialDate) {
             loadAvailableTimes(initialDate);
@@ -123,14 +151,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const serviceCards = servicesForm.querySelectorAll('.service-card'); 
 
         function updateSelectedServicesInput() {
-            const selectedValues = [];
+            const selectedServices = [];
             const checkedCheckboxes = servicesForm.querySelectorAll('input[type="checkbox"][name="servicos[]"]:checked');
             
             checkedCheckboxes.forEach(checkbox => {
-                selectedValues.push(checkbox.value);
+                const card = checkbox.closest('.service-card');
+                selectedServices.push({
+                    id: card.dataset.serviceId,
+                    nome: checkbox.value,
+                    valor: parseFloat(card.dataset.price)
+                });
             });
             
-            selectedServicesInput.value = JSON.stringify(selectedValues);
+            const servicesJson = JSON.stringify(selectedServices);
+            selectedServicesInput.value = servicesJson;
+            
+            // ==========================================================
+            // ===== TRECHO NOVO PARA CORRIGIR A PASSAGEM DE DADOS =====
+            // ==========================================================
+            // Salva os dados dos serviços na "memória" do navegador (localStorage)
+            localStorage.setItem('selectedServices', servicesJson);
+            // ==========================================================
         }
 
         serviceCards.forEach(card => {
@@ -142,10 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     card.classList.add('selected');
                     selectButton.textContent = 'Selecionado';
                     selectButton.classList.add('selected');
-                } else {
-                    card.classList.remove('selected');
-                    selectButton.textContent = 'Selecionar';
-                    selectButton.classList.remove('selected');
                 }
 
                 selectButton.addEventListener('click', () => {
@@ -159,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         selectButton.textContent = 'Selecionar';
                         selectButton.classList.remove('selected');
                     }
-                    updateSelectedServicesInput();
+                    updateSelectedServicesInput(); 
                 });
             }
         });

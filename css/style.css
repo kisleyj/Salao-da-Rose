@@ -1,6 +1,6 @@
-/* SEU CSS COMPLETO ATÉ AQUI */
-
-/* Estilos Globais */
+/* ========================================================= */
+/* =====           ESTILOS GLOBAIS E CORPO             ===== */
+/* ========================================================= */
 * {
     margin: 0;
     padding: 0;
@@ -15,42 +15,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-
-/* Estilos para o Wrapper da tela de Login/Cadastro (index.php) (mantidos) */
-.wrapper {
-    position: relative;
-    width: 400px;
-    height: 455px;
-    background: #faf4f9;
-    border-radius: 20px;
-    padding: 40px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilos para os formulários dentro do Wrapper de Login/Cadastro (mantidos) */
-.form-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    transition: 1s ease-in-out;
-}
-
-.wrapper.active .form-wrapper.sign-in {
-    transform: translateY(-450px);
-}
-
-.wrapper .form-wrapper.sign-up {
-    position: absolute;
-    top: 450px;
-    left: 0;
-}
-
-.wrapper.active .form-wrapper.sign-up {
-    transform: translateY(-450px);
+    padding: 20px;
 }
 
 h2 {
@@ -59,10 +24,64 @@ h2 {
     text-align: center;
 }
 
+main.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* ========================================================= */
+/* =====     ESTILOS PARA LOGIN E CADASTRO (index.php) ===== */
+/* ========================================================= */
+.wrapper {
+    position: relative;
+    width: 400px;
+    height: 480px;
+    background: #faf4f9;
+    border-radius: 20px;
+    padding: 40px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    transition: 1s ease-in-out;
+}
+
+.wrapper.active .form-wrapper.sign-in {
+    transform: translateY(-480px);
+}
+
+.wrapper .form-wrapper.sign-up {
+    position: absolute;
+    top: 480px;
+    left: 0;
+}
+
+.wrapper.active .form-wrapper.sign-up {
+    transform: translateY(-480px);
+}
+
+.form-wrapper.sign-in h2 {
+    margin-bottom: 40px; 
+}
+
+.form-wrapper.sign-in button {
+    margin-top: 30px;
+}
+
 .input-group {
     position: relative;
     margin: 25px 0;
     border-bottom: 2px solid #c28f8fbe;
+    width: 100%;
 }
 
 .input-group label {
@@ -79,7 +98,7 @@ h2 {
 .input-group input {
     width: 100%;
     height: 40px;
-    font-size: 19px;
+    font-size: 1em;
     color: #3d2f47;
     padding: 0 5px;
     background: transparent;
@@ -92,15 +111,44 @@ h2 {
     top: -5px;
 }
 
-.input-group .icon {
-    position: absolute;
-    right: 8px;
-    color: #3d2f47;
+.login-input-group {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.login-input-group h3 {
+    font-size: 1em;
+    color: #240119;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.login-input-group h3 ion-icon {
     font-size: 1.2em;
-    line-height: 57px;
+    color: #bb335c;
+}
+
+.form-control-login {
+    width: 100%;
+    height: 40px;
+    padding: 0 15px;
+    border: 1px solid #c28f8fbe;
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+.form-control-login:focus {
+    border-color: #bb335c;
+    box-shadow: 0 0 0 3px rgba(187, 51, 92, 0.2);
 }
 
 .remember {
+    width: 100%;
+    text-align: left;
     margin: -5px 0 15px 5px;
 }
 
@@ -114,12 +162,13 @@ h2 {
     margin-right: 3px;
 }
 
-button {
+button[type="submit"].continue-button,
+.form-wrapper button[type="submit"] {
     position: relative;
     width: 100%;
-    height: 40px;
+    height: 45px;
     background: #bb335c;
-    font-size: 16px;
+    font-size: 1em;
     color: #f5edef;
     font-weight: 500;
     cursor: pointer;
@@ -148,64 +197,76 @@ button {
     text-decoration: underline;
 }
 
-#formCadastro {
-    background-color: #fef5f8;
-    padding: 20px;
-    border-radius: 20px;
-    max-width: 400px;
-    margin: 20px auto;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
+/* ========================================================= */
+/* ===== ESTILOS PARA PÁGINAS INTERNAS (GERAL)         ===== */
+/* ========================================================= */
 
-/* Estilos para o Wrapper Custom (tela de Serviços e Agendar) (mantidos) */
 .wrapper-custom {
     position: relative;
     width: 400px;
     min-height: 400px;
     background: #faf4f9;
     border-radius: 20px;
-    padding: 40px;
-    overflow: hidden;
+    padding: 25px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Adaptação do main.main-content para as telas internas (mantidos) */
-main.main-content {
+.page-header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
     width: 100%;
-    max-width: 100%;
-    flex-grow: 1;
+    margin-bottom: 15px;
+    min-height: 25px; 
 }
 
-/* Estilos para a Seção de Seleção de Serviços (servicos.php) (mantidos) */
+.header-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #bb335c;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9em;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.header-link:hover {
+    opacity: 0.7;
+}
+
+.header-link ion-icon {
+    font-size: 1.2em;
+}
+
+.booking-section,
 .services-selection-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     text-align: center;
-    padding-top: 20px;
 }
 
-/* Estilo do título da tela de serviços (mantido) */
+.booking-section h2,
 .services-selection-section h2 {
-    font-size: 30px;
-    color: #bb335c;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
-/* Subtítulo na tela de serviços (mantido) */
+.booking-section .subtitle,
 .services-selection-section .subtitle {
     font-size: 1em;
     color: #857074;
-    margin-top: -20px;
+    margin-top: 0;
     margin-bottom: 30px;
 }
 
-/* Estilo para cada CARD de serviço (mantidos) */
+.continue-button {
+    margin-top: 30px;
+}
+
+/* --- Tela de Serviços (servicos.php) --- */
+
 .service-card {
     padding: 8px 12px;
     min-height: 60px;
@@ -216,63 +277,30 @@ main.main-content {
     display: flex;
     align-items: center;
     gap: 10px;
-    justify-content: space-between;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
     width: 100%;
-}
-
-.service-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.service-card.selected {
-    background: #bb335c;
-    color: #f5edef;
-    border-color: #bb335c;
-    box-shadow: 0 4px 12px rgba(187, 51, 92, 0.2);
-}
-
-.service-card.selected .service-icon,
-.service-card.selected .service-details h3,
-.service-card.selected .service-details p {
-    color: #f5edef;
 }
 
 .service-icon {
     font-size: 1.8em;
     color: #bb335c;
-    margin-right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
 }
 
 .service-details {
     flex-grow: 1;
     text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 .service-details h3 {
     font-size: 1em;
     color: #240119;
-    margin-bottom: 0px;
 }
 
 .service-details p {
     font-size: 0.8em;
     color: #857074;
     font-weight: 600;
-    line-height: 1.2;
 }
 
-/* Botão "Selecionar" (mantidos) */
 .select-button {
     background: #c28f8fbe;
     color: #f5edef;
@@ -282,108 +310,38 @@ main.main-content {
     font-weight: 500;
     cursor: pointer;
     border: none;
-    outline: none;
-    transition: background 0.3s ease, color 0.3s ease;
     width: 90px;
     height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.select-button:hover {
-    background: #a32b4f;
 }
 
 .select-button.selected {
     background: #bb335c;
-    color: #f5edef;
 }
 
-/* Ocultar checkboxes padrão (mantidos) */
-.service-option input[type="checkbox"] {
-    display: none;
-}
+/* --- Tela de Agendamento (agendar.php) --- */
 
-.service-option label {
-    display: none;
-}
-
-/* Botão "Continuar" (para servicos.php e agendar.php) (mantidos) */
-.services-form .continue-button,
-.booking-form .continue-button {
-    margin-top: 40px;
-    width: 100%;
-    max-width: 250px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Estilo para o link "Voltar" DENTRO do wrapper-custom (mantidos) */
-.inner-top-link-nav {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    z-index: 10;
-}
-
-.inner-top-link-nav .back-to-login-link {
-    color: #bb335c;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9em;
-    padding: 5px 10px;
-    border-radius: 5px;
-    background-color: transparent;
-    border: 1px solid #c28f8fbe;
-    box-shadow: none;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.inner-top-link-nav .back-to-login-link:hover {
-    background-color: rgba(194, 143, 143, 0.2);
-    text-decoration: none;
-    box-shadow: none;
-    border-color: #bb335c;
-}
-
-/* Estilos para a Seção de Agendamento (agendar.php) (mantidos) */
-.booking-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    text-align: center;
-    padding-top: 20px;
-}
-
-.booking-section h2 {
-    font-size: 30px;
-    color: #bb335c;
-    margin-bottom: 30px;
-}
-
-.booking-section .subtitle {
-    font-size: 1em;
-    color: #857074;
-    margin-top: -20px;
-    margin-bottom: 30px;
-}
-
-/* Estilos para os grupos de input da tela de agendamento (data/hora) (mantidos) */
-.input-group-agendamento {
+.input-group-agendamento,
+.time-slot-selection {
     margin-bottom: 20px;
     width: 100%;
     text-align: left;
 }
 
-.input-group-agendamento label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 1em;
+.input-group-agendamento h3,
+.time-slot-selection h3 {
+    font-size: 1.1em;
     color: #240119;
     font-weight: 500;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.input-group-agendamento h3 ion-icon,
+.time-slot-selection h3 ion-icon {
+    font-size: 1.5em;
+    color: #bb335c;
 }
 
 .input-group-agendamento .form-control {
@@ -392,105 +350,241 @@ main.main-content {
     border: 1px solid #c28f8fbe;
     border-radius: 8px;
     font-size: 1em;
-    color: #3d2f47;
-    background-color: #fefcfd;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
-    outline: none;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.input-group-agendamento .form-control:focus {
-    border-color: #bb335c;
-    box-shadow: 0 0 0 3px rgba(187, 51, 92, 0.2);
-}
-
-/* NOVIDADE: Estilos para os slots de horário (botões) */
-.time-slot-selection {
-    width: 100%;
-    margin-bottom: 30px;
-    text-align: left; /* Títulos e ícones alinhados à esquerda dentro da seção */
-}
-
-.time-slot-selection h3 {
-    font-size: 1.1em;
-    color: #240119; /* Cor do texto padrão */
-    font-weight: 500;
-    margin-bottom: 15px; /* Espaço abaixo do título */
-    display: flex;
-    align-items: center;
-    gap: 8px; /* Espaçamento entre ícone e texto */
-}
-
-.time-slot-selection h3 ion-icon {
-    font-size: 1.5em; /* Tamanho do ícone de relógio */
-    color: #bb335c; /* Cor do ícone */
 }
 
 .time-slots-grid {
     display: grid;
-    /* 4 colunas em telas maiores, 3 em telas médias, 2 em telas pequenas */
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 10px; /* Espaçamento entre os botões */
-    justify-content: center; /* Centraliza a grid se houver espaço sobrando */
-    align-items: stretch; /* Garante que os itens preencham a altura */
+    grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
+    gap: 10px; 
 }
 
 .time-slot-button {
-    background: #fefcfd; /* Fundo do card */
-    border: 1px solid #c28f8fbe; /* Borda suave */
-    border-radius: 10px; /* Bordas arredondadas */
-    padding: 10px 0; /* Padding vertical, padding horizontal é flexível */
-    font-size: 1em;
-    color: #3d2f47;
-    font-weight: 500;
+    background: #fefcfd; 
+    border: 1px solid #c28f8fbe; 
+    border-radius: 10px; 
+    height: 45px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08); /* Sombra suave */
-    /* Para garantir a altura, mesmo se o texto variar */
-    min-width: 70px;
-    height: 45px; /* Altura fixa para todos os botões */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.time-slot-button:hover {
-    background: #faedef; /* Rosa mais claro no hover */
-    border-color: #bb335c;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
 
 .time-slot-button.selected {
-    background: #bb335c; /* Cor principal quando selecionado */
+    background: #bb335c; 
     border-color: #bb335c;
-    color: #f5edef; /* Texto branco */
-    box-shadow: 0 2px 5px rgba(187, 51, 92, 0.2);
+    color: #f5edef;
 }
 
-.time-slot-button.disabled { /* Estilo para horários indisponíveis */
-    background: #e0e0e0;
-    color: #a0a0a0;
-    border-color: #d0d0d0;
-    cursor: not-allowed;
-    box-shadow: none;
+/* --- Tela de Resumo e Pagamento --- */
+
+.summary-card {
+    background-color: #faedef;
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    text-align: left;
 }
 
-.time-slot-button.disabled:hover {
-    background: #e0e0e0; /* Não muda no hover */
-    color: #a0a0a0;
-    border-color: #d0d0d0;
-    box-shadow: none;
+.summary-card .service-name {
+    font-size: 1.05em;
+    font-weight: 600;
 }
 
+.summary-card .service-time {
+    font-size: 0.95em;
+    color: #857074;
+}
 
-/* Media Queries para responsividade */
+.payment-title {
+    color: #3d2f47;
+    font-weight: 600;
+    font-size: 1em;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.payment-options input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+}
+
+.payment-options label {
+    display: flex;
+    align-items: center;
+    background: #fefcfd;
+    border: 1px solid #e0c8cc;
+    border-radius: 12px;
+    padding: 12px 15px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.payment-options .payment-icon {
+    font-size: 1.4em;
+    color: #bb335c;
+    margin-right: 15px;
+}
+
+.payment-options input[type="radio"]:checked + label {
+    border-color: #bb335c;
+    background-color: #faf4f9;
+    box-shadow: 0 0 0 2px #bb335c;
+}
+
+/* --- Tela de Meus Agendamentos --- */
+
+.new-appointment-wrapper {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.btn-new-appointment {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #bb335c;
+    color: #f5edef;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 500;
+    font-size: 1em;
+    text-decoration: none;
+}
+
+.appointments-list-v2 {
+    width: 100%;
+}
+
+.appointment-card-v2 {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+    background-color: #faf4f9;
+    border: 1px solid #f0e3e6;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.card-details-v2 {
+    flex-grow: 1; 
+    min-width: 0; 
+}
+
+.card-details-v2 .service-name {
+    font-weight: 600;
+    font-size: 1em; 
+    display: block;
+    margin-bottom: 3px;
+}
+
+.card-details-v2 .service-date {
+    font-size: 0.9em; 
+    color: #857074;
+}
+
+.card-pricing {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: auto; 
+}
+
+.card-pricing .price {
+    font-weight: 700;
+    font-size: 1.1em; 
+    color: #bb335c;
+}
+
+.card-pricing .payment-method {
+    font-size: 0.9em; 
+    color: #857074;
+}
+
+.card-status {
+    flex-shrink: 0;
+    margin-left: 10px;
+}
+
+.card-status .status-badge {
+    background-color: #bb335c;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8em; 
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.no-appointments-message {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f8f0f2;
+    border-radius: 10px;
+    color: #857074;
+}
+
+.no-appointments-message ion-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+/* --- Tela de Confirmação --- */
+
+.confirmation-section {
+    text-align: center;
+}
+
+.confirmation-section .icon-success {
+    font-size: 60px;
+    color: #bb335c;
+    margin-bottom: 15px;
+}
+
+.confirmation-section h2 {
+    margin-bottom: 10px;
+}
+
+.confirmation-buttons {
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.confirmation-buttons .btn {
+    text-decoration: none;
+    color: #f5edef;
+    background: #bb335c;
+    height: 45px;
+    border-radius: 30px;
+    font-weight: 500;
+    width: 100%;
+    max-width: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.confirmation-buttons .btn.btn-secondary {
+    background: transparent;
+    border: 1px solid #bb335c;
+    color: #bb335c;
+}
+
+/* ========================================================= */
+/* =====           SEÇÃO DE RESPONSIVIDADE             ===== */
+/* ========================================================= */
+
 @media (max-width: 450px) {
     .wrapper, .wrapper-custom {
         width: 95%;
         padding: 20px;
     }
-    .services-selection-section h2, .booking-section h2 {
+    h2 {
         font-size: 24px;
     }
     .service-card {
@@ -499,35 +593,13 @@ main.main-content {
         text-align: center;
         padding: 10px;
         gap: 0;
-        min-height: auto;
     }
     .service-details {
         margin-bottom: 10px;
         text-align: center;
     }
-    .service-icon {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
     .select-button {
         width: 100%;
         max-width: 150px;
-        height: auto;
-    }
-    .input-group-agendamento .form-control {
-        padding: 8px 10px;
-        font-size: 0.95em;
-    }
-    /* Ajustes para grid de horários em mobile */
-    .time-slots-grid {
-        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr)); /* Mais compacto em mobile */
-        gap: 8px;
-    }
-    .time-slot-button {
-        font-size: 0.9em;
-        height: 40px;
-    }
-    body {
-        padding: 10px;
     }
 }
